@@ -27,6 +27,7 @@ const (
 	DialectTurso      Dialect = "turso"
 	DialectVertica    Dialect = "vertica"
 	DialectYdB        Dialect = "ydb"
+	DialectCassandra  Dialect = "cassandra"
 )
 
 // NewStore returns a new [Store] implementation for the given dialect.
@@ -47,6 +48,7 @@ func NewStore(d Dialect, tableName string) (Store, error) {
 		DialectTurso:      dialects.NewTurso(),
 		DialectVertica:    dialects.NewVertica(),
 		DialectYdB:        dialects.NewYDB(),
+		DialectCassandra:  dialects.NewCassandra(),
 	}
 	querier, ok := lookup[d]
 	if !ok {
